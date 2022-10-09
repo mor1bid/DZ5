@@ -56,5 +56,15 @@ elif line1[0] == 'o' and line3[1]==line2[1]==line1[1]:
     print('Игрок 2 побеждает!')
 elif line1[0] == 'x' and line3[2]==line2[2]==line1[2] or line3[0]==line2[1]==line1[2]:
     print('Игрок 1 побеждает!')
+elif line1[0] == 'o' and line3[2]==line2[2]==line1[2] or line3[0]==line2[1]==line1[2]:
+    print('Игрок 2 побеждает!')
+elif line1[0] == 'x' and line2[2]==line2[1]==line2[0]:
+    print('Игрок 1 побеждает!')
+elif line1[0] == 'o' and line2[2]==line2[1]==line2[0]:
+    print('Игрок 2 побеждает!')
+elif line1[0] == 'x' and line3[2]==line3[1]==line3[0]:
+    print('Игрок 1 побеждает!')
+elif line1[0] == 'o' and line3[2]==line3[1]==line3[0]:
+    print('Игрок 2 побеждает!')
 else:
     round==0
