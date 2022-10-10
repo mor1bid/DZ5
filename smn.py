@@ -2,6 +2,7 @@ text = 'abc fgtga abc fkgoo abcfg'.split()
 res = list(filter(lambda x: 'abc' not in x, text))
 print('1.', res)
 
+print('2.')
 line1 = '. . .'.split()
 line2 = '. . .'.split()
 line3 = '. . .'.split()
@@ -48,31 +49,31 @@ while round < 9:
     round += 1
     if line1[0] == 'x' and line1[2]==line1[1]==line1[0] or line1[0] == 'x' and line3[2]==line2[1]==line1[0] or line1[0] == 'x' and line3[0]==line2[0]==line1[0]:
         print('Игрок 1 побеждает!')
-        round==9
+        break
     elif line1[0] == 'o' and line1[2]==line1[1]==line1[0] or line1[0] == 'x' and line3[2]==line2[1]==line1[0] or line1[0] == 'x' and line3[0]==line2[0]==line1[0]:
         print('Игрок 2 побеждает!')
-        round==9
+        break
     elif line1[1] == 'x' and line3[1]==line2[1]==line1[1]:
         print('Игрок 1 побеждает!')
-        round==9
+        break
     elif line1[1] == 'o' and line3[1]==line2[1]==line1[1]:
         print('Игрок 2 побеждает!')
-        round==9
+        break
     elif line1[2] == 'x' and line3[2]==line2[2]==line1[2] or line1[2] == 'x' and line3[0]==line2[1]==line1[2]:
         print('Игрок 1 побеждает!')
-        round==9
+        break
     elif line1[2] == 'o' and line3[2]==line2[2]==line1[2] or line1[2] == 'x' and line3[0]==line2[1]==line1[2]:
         print('Игрок 2 побеждает!')
-        round==9
+        break
     elif line2[0] == 'x' and line2[2]==line2[1]==line2[0]:
         print('Игрок 1 побеждает!')
-        round==9
+        break
     elif line2[0] == 'o' and line2[2]==line2[1]==line2[0]:
         print('Игрок 2 побеждает!')
-        round==9
+        break
     elif line3[0] == 'x' and line3[2]==line3[1]==line3[0]:
         print('Игрок 1 побеждает!')
-        round==9
+        break
     elif line3[0] == 'o' and line3[2]==line3[1]==line3[0]:
         print('Игрок 2 побеждает!')
-        round==9
+        break
