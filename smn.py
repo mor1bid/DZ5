@@ -81,50 +81,61 @@
 #         print('Ничья.')
 
 import random
-print('3.')
-bank = 84
-p1bank = 0
-p2bank = 0
-round = 0
+play = True
+while play == True:
+    bank = int(input('3. Здравствуйте! \nВведите желаемое количество конфет в общем банке: '))
+    p1bank = 0
+    p2bank = 0
+    round = 0
 
-while bank>0:
-    move = random.randint(0, 2)
-    print(move)
-    if move == 1:
-        p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
-        if p1mo>28 or p1mo>bank:
-            print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+    while bank>0:
+        move = random.randint(0, 2)
+        print(move)
+        if move == 1:
+            p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
+            if p1mo>28 or p1mo>bank:
+                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+            else:
+                p1bank += p1mo
+                bank -= p1mo
+            print('У вас', p1bank, 'конфет! \n Конфет в банке:', bank, '\n')
+            p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
+            if p2mo>28 or p2mo>bank:
+                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+            else:
+                p2bank = p2bank + p2mo + p1bank
+                p1bank = 0
+                bank -= p2mo
+            print('У вас', p2bank, 'конфет! \n Игрок 1 остался без лакомств :с \n Конфет в банке:', bank, '\n')
         else:
-            p1bank += p1mo
-            bank -= p1mo
-        print('У вас', p1bank, 'конфет! \n Конфет в банке:', bank)
-        p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
-        if p2mo>28 or p2mo>bank:
-            print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
-        else:
-            p2bank = p2bank + p2mo + p1bank
-            p1bank = 0
-            bank -= p2mo
-        print('У вас', p2bank, 'конфет! \n Игрок 1 остался без лакомств :с \n Конфет в банке:', bank)
+            p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
+            if p2mo>28 or p2mo>bank:
+                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+            else:
+                p2bank += p2mo
+                bank -= p2mo
+            print('У вас', p2bank, 'конфет! \n Конфет в банке:', bank, '\n')
+            p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
+            if p1mo>28 or p1mo>bank:
+                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+            else:
+                p1bank = p1bank + p1mo + p2bank
+                p2bank = 0
+                bank -= p1mo
+            print('У вас', p1bank, 'конфет! \nИгрок 2 остался без лакомств :с \n Конфет в банке:', bank, '\n')
+    if p1bank>p2bank:
+        print('Игрок 1 побеждает со счётом в', p1bank, 'конфет! \n')
+    elif p1bank<p2bank:
+        print('Игрок 2 побеждает со счётом в', p2bank, 'конфет! \n')
     else:
-        p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
-        if p2mo>28 or p2mo>bank:
-            print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+        print('Ничья! \n')
+    i = 0
+    while i == 0:
+        choice = input('Новая игра? y/n: ')
+        if choice == 'n':
+            play == False
+            i+=1
+        elif choice == 'y':
+            i+=1
         else:
-            p2bank += p2mo
-            bank -= p2mo
-        print('У вас', p2bank, 'конфет! \n Конфет в банке:', bank)
-        p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
-        if p1mo>28 or p1mo>bank:
-            print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
-        else:
-            p1bank = p1bank + p1mo + p2bank
-            p2bank = 0
-            bank -= p1mo
-        print('У вас', p1bank, 'конфет! \nИгрок 2 остался без лакомств :с \n Конфет в банке:', bank)
-if p1bank>p2bank:
-    print('Игрок 1 побеждает со счётом в', p1bank, 'конфет!')
-elif p1bank<p2bank:
-    print('Игрок 1 побеждает со счётом в', p1bank, 'конфет!')
-else:
-    print('Ничья!')
+            print('Ошибка!')
