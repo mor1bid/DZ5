@@ -4,6 +4,7 @@
 
 def xox(play = True):
     while play == True:
+        print('2. Крестики-нолики! \nВводите соответсвующую позицию (первый ряд - 0, 1, 2 и т.д) для игры.')
         line1 = '. . .'.split()
         line2 = '. . .'.split()
         line3 = '. . .'.split()
@@ -28,6 +29,39 @@ def xox(play = True):
                 else:
                     print('Задано некорректное значение.')
             print('\n', line1, '\n', line2, '\n', line3, '\n')
+            def res():
+                if line1[0] == 'x' and line1[2]==line1[1]==line1[0] or line1[0] == 'x' and line3[2]==line2[1]==line1[0] or line1[0] == 'x' and line3[0]==line2[0]==line1[0]:
+                    print('Игрок 1 побеждает!')
+                    return
+                elif line1[0] == 'o' and line1[2]==line1[1]==line1[0] or line1[0] == 'o' and line3[2]==line2[1]==line1[0] or line1[0] == 'o' and line3[0]==line2[0]==line1[0]:
+                    print('Игрок 2 побеждает!')
+                    return
+                elif line1[1] == 'x' and line3[1]==line2[1]==line1[1]:
+                    print('Игрок 1 побеждает!')
+                    return
+                elif line1[1] == 'o' and line3[1]==line2[1]==line1[1]:
+                    print('Игрок 2 побеждает!')
+                    return
+                elif line1[2] == 'x' and line3[2]==line2[2]==line1[2] or line1[2] == 'x' and line3[0]==line2[1]==line1[2]:
+                    print('Игрок 1 побеждает!')
+                    return
+                elif line1[2] == 'o' and line3[2]==line2[2]==line1[2] or line1[2] == 'o' and line3[0]==line2[1]==line1[2]:
+                    print('Игрок 2 побеждает!')
+                    return
+                elif line2[0] == 'x' and line2[2]==line2[1]==line2[0]:
+                    print('Игрок 1 побеждает!')
+                    return
+                elif line2[0] == 'o' and line2[2]==line2[1]==line2[0]:
+                    print('Игрок 2 побеждает!')
+                    return
+                elif line3[0] == 'x' and line3[2]==line3[1]==line3[0]:
+                    print('Игрок 1 побеждает!')
+                    return
+                elif line3[0] == 'o' and line3[2]==line3[1]==line3[0]:
+                    print('Игрок 2 побеждает!')
+                    return
+                if round==5:
+                    print('Ничья.')
             move += 1
             if move == 1:
                 o = int(input('Игрок 2, введите желаемую позицию: '))
@@ -48,47 +82,17 @@ def xox(play = True):
             print('\n', line1, '\n', line2, '\n', line3, '\n')
             move -= 1
             round += 1
-            if line1[0] == 'x' and line1[2]==line1[1]==line1[0] or line1[0] == 'x' and line3[2]==line2[1]==line1[0] or line1[0] == 'x' and line3[0]==line2[0]==line1[0]:
-                print('Игрок 1 побеждает!')
-                break
-            elif line1[0] == 'o' and line1[2]==line1[1]==line1[0] or line1[0] == 'o' and line3[2]==line2[1]==line1[0] or line1[0] == 'o' and line3[0]==line2[0]==line1[0]:
-                print('Игрок 2 побеждает!')
-                break
-            elif line1[1] == 'x' and line3[1]==line2[1]==line1[1]:
-                print('Игрок 1 побеждает!')
-                break
-            elif line1[1] == 'o' and line3[1]==line2[1]==line1[1]:
-                print('Игрок 2 побеждает!')
-                break
-            elif line1[2] == 'x' and line3[2]==line2[2]==line1[2] or line1[2] == 'x' and line3[0]==line2[1]==line1[2]:
-                print('Игрок 1 побеждает!')
-                break
-            elif line1[2] == 'o' and line3[2]==line2[2]==line1[2] or line1[2] == 'o' and line3[0]==line2[1]==line1[2]:
-                print('Игрок 2 побеждает!')
-                break
-            elif line2[0] == 'x' and line2[2]==line2[1]==line2[0]:
-                print('Игрок 1 побеждает!')
-                break
-            elif line2[0] == 'o' and line2[2]==line2[1]==line2[0]:
-                print('Игрок 2 побеждает!')
-                break
-            elif line3[0] == 'x' and line3[2]==line3[1]==line3[0]:
-                print('Игрок 1 побеждает!')
-                break
-            elif line3[0] == 'o' and line3[2]==line3[1]==line3[0]:
-                print('Игрок 2 побеждает!')
-                break
-            if round==5:
-                print('Ничья.')
-    i = 0
-    while i == 0:
-        choice = input('Новая игра? y/n: ')
-        if choice == 'n':
-            return play == False
-        elif choice == 'y':
-            i+=1
-        else:
-            print('Ошибка!')
+            res()
+        i = 0
+        while i == 0:
+            choice = input('Новая игра? y/n: ')
+            if choice == 'n':
+                return play == False
+            elif choice == 'y':
+                i+=1
+            else:
+                print('Ошибка!')
+    res()
 xox()
 
 import random
