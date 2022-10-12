@@ -81,72 +81,68 @@
 #         print('Ничья.')
 
 import random
-play = True
-while play == True:
-    mode = input('3. Здравствуйте! \nХотите играть с другим игроком, или с компьютером? h/b: ')
-    bank = int(input('Введите желаемое количество конфет в общем банке: '))
-    p1bank = 0
-    p2bank = 0
+def game(play = True):
+    while play == True:
+        mode = input('3. Здравствуйте! \nХотите играть с другим игроком, или с компьютером? h/b: ')
+        bank = int(input('Введите желаемое количество конфет в общем банке: '))
+        p1mo = 28
+        p1bank = 0
+        p2bank = 0
 
-    while bank>0:
-        move = random.randint(0, 2)
-        print(move)
-        if move == 1:
-            p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
-            if p1mo>28 or p1mo>bank:
-                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
+        while bank>0:
+            move = random.randint(0, 1)
+            if move != 1:
+                p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
+                if p1mo>28 or p1mo>bank:
+                    print('Не жадничайте! Вы можете взять не больше чем есть в банке и не более 28 конфет за ход!')
+                else:
+                    p1bank += p1mo
+                    bank -= p1mo
+                print('Игрок 1 получил', p1bank, 'конфет(ы)! \n Конфет в банке:', bank, '\n')
+                if mode == 'h':
+                    p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
+                else:
+                    p2mo = random.randint(0, p1mo)
+                if p2mo>28 or p2mo>bank:
+                    print('Не жадничайте! Вы можете взять не больше чем есть в банке и не более 28 конфет за ход!')
+                else:
+                    p2bank = p2bank + p2mo + p1bank
+                    p1bank = 0
+                    bank -= p2mo
+                print('Игрок 2 получил', p2bank, 'конфет(ы)! \n Игрок 1 остался без лакомств :с \n Конфет в банке:', bank, '\n')
             else:
-                p1bank += p1mo
-                bank -= p1mo
-            print('Игрок 1 получил', p1bank, 'конфет(ы)! \n Конфет в банке:', bank, '\n')
-            if mode == 'h':
-                p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
-            elif bank<28:
-                p2mo = random.randint(1, round(bank/3))
-            else:
-                p2mo = random.randint(1, 28)
-            if p2mo>28 or p2mo>bank:
-                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
-            else:
-                p2bank = p2bank + p2mo + p1bank
-                p1bank = 0
-                bank -= p2mo
-            print('Игрок 2 получил', p2bank, 'конфет(ы)! \n Игрок 1 остался без лакомств :с \n Конфет в банке:', bank, '\n')
-        else:
-            if mode == 'h':
-                p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
-            elif bank<28:
-                p2mo = random.randint(1, round(bank/3))
-            else:
-                p2mo = random.randint(1, 28)
-            if p2mo>28 or p2mo>bank:
-                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
-            else:
-                p2bank += p2mo
-                bank -= p2mo
-            print('Игрок 2 получил', p2bank, 'конфет(ы)! \n Конфет в банке:', bank, '\n')
-            p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
-            if p1mo>28 or p1mo>bank:
-                print('Не жадничайте! Вы можете взять не более 28 конфет за ход!')
-            else:
-                p1bank = p1bank + p1mo + p2bank
-                p2bank = 0
-                bank -= p1mo
-            print('Игрок 1 получил', p1bank, 'конфет(ы)! \nИгрок 2 остался без лакомств :с \n Конфет в банке:', bank, '\n')
+                if mode == 'h':
+                    p2mo = int(input('Игрок 2, введите желаемое кол-во конфет: '))
+                else:
+                    p2mo = random.randint(0, p1mo)
+                if p2mo>28 or p2mo>bank:
+                    print('Не жадничайте! Вы можете взять не больше чем есть в банке и не более 28 конфет за ход!')
+                else:
+                    p2bank += p2mo
+                    bank -= p2mo
+                print('Игрок 2 получил', p2bank, 'конфет(ы)! \n Конфет в банке:', bank, '\n')
+                p1mo = int(input('Игрок 1, введите желаемое кол-во конфет: '))
+                if p1mo>28 or p1mo>bank:
+                    print('Не жадничайте! Вы можете взять не больше чем есть в банке и не более 28 конфет за ход!')
+                else:
+                    p1bank = p1bank + p1mo + p2bank
+                    p2bank = 0
+                    bank -= p1mo
+                print('Игрок 1 получил', p1bank, 'конфет(ы)! \nИгрок 2 остался без лакомств :с \n Конфет в банке:', bank, '\n')
 
-    if p1bank>p2bank:
-        print('Игрок 1 побеждает со счётом в', p1bank, 'конфет!')
-    elif p1bank<p2bank:
-        print('Игрок 2 побеждает со счётом в', p2bank, 'конфет!')
-    else:
-        print('Ничья!')
-    i = 0
-    while i == 0:
-        choice = input('Новая игра? y/n: ')
-        if choice == 'n':
-            play == False
-            i+=1
-        elif choice == 'y':
-            i+=1
+        if p1bank>p2bank:
+            print('Игрок 1 побеждает со счётом в', p1bank, 'конфет!')
+        elif p1bank<p2bank:
+            print('Игрок 2 побеждает со счётом в', p2bank, 'конфет!')
         else:
-            print('Ошибка!')
+            print('Ничья!')
+        i = 0
+        while i == 0:
+            choice = input('Новая игра? y/n: ')
+            if choice == 'n':
+                return play == False
+            elif choice == 'y':
+                i+=1
+            else:
+                print('Ошибка!')
+game()
