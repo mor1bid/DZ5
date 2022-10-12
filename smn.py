@@ -194,13 +194,14 @@
 #                 print('Ошибка!')
 # game()
 
-text = input('3. Введите текст (латиницей), что желаете сжать: \n')
+text = input('3. Введите текст, что желаете сжать: \n')
 with open('dz4tin.txt', 'w') as tin:
     tin.writelines(text)
 tin = open('dz4tin.txt', 'r')
 tin = str(*tin)
 enc = ''
 co = 1
+
 for i in range(len(tin)-1):
     if i <= len(tin):
         if tin[i] == tin[i + 1] and tin[i].isdigit()==False and co < 9:
@@ -222,14 +223,16 @@ with open('dz4tout.txt', 'w') as tout:
     tout.writelines(enc)
 dec = ''
 for i in range(len(enc)):
-    if enc[i].isdigit() and enc[i+1].isdigit() == False:
-        co = enc[i]
-    elif enc[i].isdigit() and enc[i+1].isdigit():
-        dec += enc[i]
+    if i<len(enc)-1:
+        if enc[i].isdigit() and enc[i+1].isdigit() == False:
+            co = enc[i]
+        elif enc[i].isdigit() and enc[i+1].isdigit():
+            dec += enc[i]
+        else:
+            dec += enc[i]*int(co)
     else:
-        dec += enc[i]*int(co)
-# if dec[i+1].isdigit():
-#     dec += enc[i+1]
-# else:
-#     dec += enc[i+1]*int(co)
+        if enc[i].isdigit():
+            dec += enc[i]
+        else:
+            dec += enc[i]*int(co)
 print(dec)
