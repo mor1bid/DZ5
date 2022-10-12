@@ -202,22 +202,34 @@ tin = str(*tin)
 enc = ''
 co = 1
 for i in range(len(tin)-1):
-    if i <= len(tin)+1:
-        if tin[i] == tin[i + 1]:
+    if i <= len(tin):
+        if tin[i] == tin[i + 1] and tin[i].isdigit()==False and co < 9:
             co += 1
+        elif tin[i].isdigit():
+            enc+=tin[i]
+        elif co == 9:
+            enc+=str(co)+tin[i]
+            co = 1
         else:
-            temp = tin[i]
             enc += str(co)+tin[i]
             co = 1
-enc += str(co)+tin[i+1]
+if tin[i+1].isdigit():
+    enc+=tin[i+1]
+else:
+    enc += str(co)+tin[i+1]
 print(enc)
 with open('dz4tout.txt', 'w') as tout:
     tout.writelines(enc)
 dec = ''
 for i in range(len(enc)):
-    if enc[i].isdigit():
+    if enc[i].isdigit() and enc[i+1].isdigit() == False:
         co = enc[i]
-        print(co)
+    elif enc[i].isdigit() and enc[i+1].isdigit():
+        dec += enc[i]
     else:
         dec += enc[i]*int(co)
+# if dec[i+1].isdigit():
+#     dec += enc[i+1]
+# else:
+#     dec += enc[i+1]*int(co)
 print(dec)
