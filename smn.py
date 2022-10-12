@@ -195,12 +195,29 @@
 # game()
 
 text = input('3. Введите текст (латиницей), что желаете сжать: \n')
-co = 0
-with ('tin.txt', 'w') as tin:
-    tin.writeline(text)
-# code = str(filter(lambda i: 'a' in i, co+=1, tin))
-for i in tin:
-    while 'a' in i and co<10:
-        co+=1
-    print(co, 'a')
-
+with open('dz4tin.txt', 'w') as tin:
+    tin.writelines(text)
+tin = open('dz4tin.txt', 'r')
+tin = str(*tin)
+enc = ''
+co = 1
+for i in range(len(tin)-1):
+    if i <= len(tin)+1:
+        if tin[i] == tin[i + 1]:
+            co += 1
+        else:
+            temp = tin[i]
+            enc += str(co)+tin[i]
+            co = 1
+enc += str(co)+tin[i+1]
+print(enc)
+with open('dz4tout.txt', 'w') as tout:
+    tout.writelines(enc)
+dec = ''
+for i in range(len(enc)):
+    if enc[i].isdigit():
+        co = enc[i]
+        print(co)
+    else:
+        dec += enc[i]*int(co)
+print(dec)
