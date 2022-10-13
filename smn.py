@@ -1,6 +1,6 @@
-# text = 'abc fgtga abc fkgoo abcfg'.split()
-# res = list(filter(lambda x: 'abc' not in x, text))
-# print('1.', res)
+text = 'abc fgtga abc fkgoo abcfg'.split()
+res = list(filter(lambda x: 'abc' not in x, text))
+print('1.', res)
 
 def xox(play = True):
     while play == True:
@@ -11,7 +11,7 @@ def xox(play = True):
         round = 0
         move = 0
         print('\n', line1, '\n', line2, '\n', line3, '\n')
-        while round < 5:
+        while round <= 4:
             if move <= 0:
                 x = int(input('Игрок 1, введите желаемую позицию: '))
                 if x >-1 and x <= 2:
@@ -77,8 +77,8 @@ def xox(play = True):
             elif line3[0] == 'o' and line3[2]==line3[1]==line3[0]:
                 print('Игрок 2 побеждает!')
                 break
-            if round==4:
-                print('Ничья.')
+            if round == 4:
+                move = 0
             if move >= 1:
                 o = int(input('Игрок 2, введите желаемую позицию: '))
                 if o >- 1 and o <= 2:
@@ -113,7 +113,7 @@ def xox(play = True):
                     move += 1
                     round -= 1
             round += 1
-            if move==0:
+            if move == 0 and round != 5:
                 print('\n', line1, '\n', line2, '\n', line3, '\n')
             if line1[0] == 'x' and line1[2]==line1[1]==line1[0] or line1[0] == 'x' and line3[2]==line2[1]==line1[0] or line1[0] == 'x' and line3[0]==line2[0]==line1[0]:
                 print('Игрок 1 побеждает!')
@@ -145,7 +145,7 @@ def xox(play = True):
             elif line3[0] == 'o' and line3[2]==line3[1]==line3[0]:
                 print('Игрок 2 побеждает!')
                 break
-            if round==4:
+            if round == 5:
                 print('Ничья.')
         i = 0
         while i == 0:
